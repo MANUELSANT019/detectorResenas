@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Detección de Sentimiento</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+</head>
+<body>
+    <div class="title">
+        <h1 class="title is-1">Clasificación de Reseñas</h1>
+    </div>
+    <div class="container">
+        <form action="{{ url_for('bp_main.clasificacion') }}" method="post">
+            <div class="field">
+                <label class="label">Texto de la Reseña</label>
+                <div class="control">
+                    <textarea class="textarea" name="texto" placeholder="Escribe tu reseña aquí..."></textarea>
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <button class="button is-link">Enviar</button>
+                </div>
+            </div>
+        </form>
+
+        <div class="content">
+            {% if p_texto %}
+            <h3 class="title is-2">El texto ingresado es:</h3>
+            <p class="subtitle is-3">{{ 'Reseña Positiva' if p_prediccion_nb == 'Positiva' else 'Reseña Negativa' }}</p>
+            {% endif %}
+        </div>
+
+        <div class="content">
+            <h3 class="title is-2">Métricas del modelo Naive Bayes</h3>
+            <p class="subtitle is-3">Accuracy: {{ accuracy_nb }}</p>
+            <p class="subtitle is-3">Precision: {{ precision_nb }}</p>
+            <p class="subtitle is-3">Recall: {{ recall_nb }}</p>
+        </div>
+    </div>
+</body>
+</html>

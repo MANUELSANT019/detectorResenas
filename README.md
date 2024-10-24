@@ -1,0 +1,1 @@
+Detector de reseñas montado con flask y entorno virtual, el cual usa un modelo multinomial y una base de datos de test de reseñas para detectar si la reseña ingresada es de caracter positivo o negativo
